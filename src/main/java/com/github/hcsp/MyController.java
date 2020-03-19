@@ -17,7 +17,12 @@ public class MyController {
     @GetMapping("/index")
     @ResponseBody
     public String index() {
-        aService.service(new Entity());
+        Entity entity = new Entity();
+        try {
+            aService.service(entity);
+        } finally {
+            entity.getThreadLocal().remove();
+        }
         return "OK";
     }
 }
