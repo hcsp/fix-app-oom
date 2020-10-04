@@ -5,8 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Objects;
-
 @Controller
 public class MyController {
     private final AService aService;
@@ -19,13 +17,7 @@ public class MyController {
     @GetMapping("/index")
     @ResponseBody
     public String index() {
-        Entity entity = null;
-        try {
-            entity = new Entity();
-            aService.service(entity);
-        } finally {
-            Objects.requireNonNull(entity).getThreadLocal().remove();
-        }
+        aService.service(new Entity());
         return "OK";
     }
 }
