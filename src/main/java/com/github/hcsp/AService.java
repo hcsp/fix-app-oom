@@ -9,6 +9,5 @@ public class AService {
         if (e != entity) {
             throw new RuntimeException();
         }
-        entity.getThreadLocal().remove();
     }
 }
