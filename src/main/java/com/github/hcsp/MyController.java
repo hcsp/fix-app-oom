@@ -17,7 +17,11 @@ public class MyController {
     @GetMapping("/index")
     @ResponseBody
     public String index() {
-        aService.service(new Entity());
+        Entity entity = new Entity();
+        aService.service(entity);
+
+        // The entity is referenced by the ThreadLocalMap in the Thread. So remove it.
+        entity.getThreadLocal().remove();
         return "OK";
     }
 }
