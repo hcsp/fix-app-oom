@@ -20,8 +20,8 @@ public class MyController {
         Entity entity = new Entity();
         try {
             aService.service(entity);
-        }finally {
-            if(entity != null){
+        } finally {
+            if (entity != null) {
                 //使用ThreadLocal一定要调用remove()方法，否则会出现内存泄漏问题!
                 entity.getThreadLocal().remove();
             }
