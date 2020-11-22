@@ -21,7 +21,7 @@ public class MyController {
         try {
             e = new Entity();
             aService.service(e);
-        }finally {
+        } finally {
             e.getThreadLocal().remove();
         }
         return "OK";
